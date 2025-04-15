@@ -27,17 +27,15 @@ function App() {
 
             async function getProduct() {
                 const url = `https://sephora.p.rapidapi.com/us/products/v2/search?pageSize=10&currentPage=1&q=${event.target.value}`
-                try {
-                    const response = await fetch(url, options);
-                    const result = await response.text();
-                    setItemsData(result);
-                    // Make sure the previous data is cleared first
-                } catch (error) {
-                    console.error(error);
-                }
+                const response = await fetch(url, options);
+                return await response.text();
             }
 
-            getProduct()
+            getProduct().then((response) => {
+                setItemsData(response);
+            }).catch((err) => {
+                setItemsData("There was an error. It was... " + err)
+            });
         }
     }
 
