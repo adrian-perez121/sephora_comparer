@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import ItemCards from "./ItemCards.jsx";
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
             async function getProduct() {
                 const url = `https://sephora.p.rapidapi.com/us/products/v2/search?pageSize=10&currentPage=1&q=${event.target.value}`
                 const response = await fetch(url, options);
-                return await response.text();
+                return await response.json();
             }
 
             getProduct().then((response) => {
@@ -45,8 +46,9 @@ function App() {
               <input className="bg-amber-50 border-amber-400 border-2 outline-none" type="text" value={itemStr} onChange={handleChange} onKeyDown={handleEnter} />
         </div>
         {/*  This is going to be there the cards go*/}
-        <p>{itemsData}</p>
-
+        <div className="grid">
+            <ItemCards products_data={itemsData["products"]}/>
+        </div>
     </>
   )
 }
