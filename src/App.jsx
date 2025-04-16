@@ -46,7 +46,7 @@ function App() {
               <input className="bg-amber-50 border-amber-400 border-2 outline-none" type="text" value={itemStr} onChange={handleChange} onKeyDown={handleEnter} />
         </div>
         {/*  This is going to be there the cards go*/}
-        <div className="grid">
+        <div className="max-w-screen grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-x-3 gap-y-2">
             <ItemCards products_data={itemsData["products"]}/>
         </div>
     </>
