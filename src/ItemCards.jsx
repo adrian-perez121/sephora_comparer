@@ -1,7 +1,7 @@
 import Card from "./Card.jsx";
 
 
-function ItemCards({products_data, onClick, ...props}) {
+function ItemCards({products_data, onClick, ..._props}) {
     if (!products_data) {
         return <> <div>Nothing here</div> </>
     }

@@ -1,5 +1,4 @@
 import Card from "./Card.jsx";
-import card from "./Card.jsx";
 
 function Comparer ({card1_data, card2_data, ...props}) {
     let card1Rating;
@@ -28,9 +27,9 @@ function Comparer ({card1_data, card2_data, ...props}) {
 
 
     return (
-        <div className="grid grid-cols-2 [width:70%]">
-            <div className="card border">{ card1_data ? <Card product_data={card1_data} ratingsColor={card1Rating} reviewsColor={card1Reviews}/> : "nothing here" }</div>
-            <div className="card border">{ card2_data ? <Card product_data={card2_data} ratingsColor={card2Rating} reviewsColor={card2Reviews} />  : "nothing here" }</div>
+        <div className="grid grid-cols-2 lg:h-104 lg:w-208">
+            <div className="card border">{<Card product_data={card1_data} ratingsColor={card1Rating} reviewsColor={card1Reviews}/>} </div>
+            <div className="card border">{<Card product_data={card2_data} ratingsColor={card2Rating} reviewsColor={card2Reviews} /> }</div>
         </div>
     )
 }
