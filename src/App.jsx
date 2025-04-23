@@ -9,6 +9,7 @@ function App() {
     const [itemsData, setItemsData] = useState('');
     const [comparedCard1, setComparedCard1] = useState(null)
     const [comparedCard2, setComparedCard2] = useState(null)
+    const cardStyle = "h-full p-2 flex flex-col border-1 border-gray-200 items-start rounded-4xl shadow-md relative transition duration-300 hover:shadow-xl hover:bg-gray-100 hover:scale-105 active:inset-shadow-sm active:shadow-none cursor-pointer";
 
 
     const handleChange = (event) => {
@@ -58,7 +59,7 @@ function App() {
 
   return (
     <>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col gap-5 items-center">
 
             <Comparer card1_data={comparedCard1} card2_data={comparedCard2}/>
 
@@ -66,8 +67,8 @@ function App() {
                 <input className="bg-amber-50 border-amber-400 border-2 outline-none" type="text" value={itemStr} onChange={handleChange} onKeyDown={handleEnter} />
             </div>
             {/*  This is going to be there the cards go*/}
-            <div className="max-w-screen grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-x-3 gap-y-2">
-                <ItemCards products_data={itemsData["products"]} onClick={comparedCard1 ? addComparedCard2 : addComparedCard1}/>
+            <div className="max-w-screen grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-x-6 gap-y-8">
+                <ItemCards products_data={itemsData["products"]} onClick={comparedCard1 ? addComparedCard2 : addComparedCard1} style={cardStyle}/>
             </div>
         </div>
 

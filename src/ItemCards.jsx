@@ -1,14 +1,14 @@
 import Card from "./Card.jsx";
 
 
-function ItemCards({products_data, onClick, ..._props}) {
+function ItemCards({products_data, onClick, style, ...props}) {
     if (!products_data) {
         return <> <div>Nothing here</div> </>
     }
     return (
         <>
             {products_data.map((product_data) => {
-                return <Card product_data={product_data} onClick={onClick} />
+                return <Card product_data={product_data} onClick={onClick} style={style} />
             })}
         </>
     )
