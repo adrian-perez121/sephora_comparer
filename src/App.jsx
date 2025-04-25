@@ -72,7 +72,7 @@ function App() {
             <Comparer card1_data={comparedCard1} card2_data={comparedCard2} card1_clear={clearCard1} card2_clear={clearCard2}/>
 
             <div>
-                <input className="px-3 py-1 w- bg-gray-200 rounded-2xl outline-none" type="text" value={itemStr} onChange={handleChange} onKeyDown={handleEnter} />
+                <input className="px-3 py-1 bg-gray-200 rounded-2xl outline-none hover:bg-gray-300 focus:bg-gray-300" type="text" value={itemStr} onChange={handleChange} onKeyDown={handleEnter} />
             </div>
             {/*  This is going to be there the cards go*/}
             <div className="max-w-screen grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-x-6 gap-y-8">
