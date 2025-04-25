@@ -5,6 +5,7 @@ import Comparer from "./Comparer.jsx";
 
 
 function App() {
+    const [used, setUsed] = useState(false);
     const [itemStr, setItemStr] = useState('');
     const [itemsData, setItemsData] = useState('');
     const [comparedCard1, setComparedCard1] = useState(null)
@@ -19,6 +20,9 @@ function App() {
 
     const handleEnter = (event) => {
         if (event.key === 'Enter') {
+            // Now that have used it once
+            setUsed(true);
+
             const options = {
                 method: 'GET',
                 headers: {
@@ -64,11 +68,12 @@ function App() {
             <Comparer card1_data={comparedCard1} card2_data={comparedCard2}/>
 
             <div>
-                <input className="bg-amber-50 border-amber-400 border-2 outline-none" type="text" value={itemStr} onChange={handleChange} onKeyDown={handleEnter} />
+                <input className="px-3 py-1 w- bg-gray-200 rounded-2xl outline-none" type="text" value={itemStr} onChange={handleChange} onKeyDown={handleEnter} />
             </div>
             {/*  This is going to be there the cards go*/}
             <div className="max-w-screen grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-x-6 gap-y-8">
-                <ItemCards products_data={itemsData["products"]} onClick={comparedCard1 ? addComparedCard2 : addComparedCard1} style={cardStyle}/>
+                <ItemCards products_data={itemsData["products"]} onClick={comparedCard1 ? addComparedCard2 : addComparedCard1} style={cardStyle}
+                           intermediate_message={!used ? "Type in a Sephora product you are looking for and compare" : "loading..."}/>
             </div>
         </div>
 

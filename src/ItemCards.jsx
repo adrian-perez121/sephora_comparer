@@ -3,7 +3,7 @@ import Card from "./Card.jsx";
 
 function ItemCards({products_data, onClick, style, ...props}) {
     if (!products_data) {
-        return <> <div>Nothing here</div> </>
+        return <> <div>{props["intermediate_message"]}</div> </>
     }
     return (
         <>

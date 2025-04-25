@@ -30,8 +30,8 @@ function Comparer ({card1_data, card2_data, ...props}) {
 
     return (
         <div className="grid grid-cols-2 lg:h-104 lg:w-208">
-            <div className="card border">{<Card product_data={card1_data} ratingsColor={card1Rating} reviewsColor={card1Reviews} style={cardStyle} />} </div>
-            <div className="card border">{<Card product_data={card2_data} ratingsColor={card2Rating} reviewsColor={card2Reviews} style={cardStyle} /> }</div>
+            <div className="card">{<Card product_data={card1_data} ratingsColor={card1Rating} reviewsColor={card1Reviews} style={cardStyle} />} </div>
+            <div className="card">{<Card product_data={card2_data} ratingsColor={card2Rating} reviewsColor={card2Reviews} style={cardStyle} /> }</div>
         </div>
     )
 }
