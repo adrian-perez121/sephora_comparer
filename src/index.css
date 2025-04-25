@@ -71,3 +71,18 @@ button:focus-visible {
     color: #747bff;
   }
 }
+
+@keyframes winner_aura {
+  from {
+    box-shadow: 0 0 8px 1px green;
+  }
+
+  to {
+    box-shadow: 0 0 16px 1px green;
+  }
+}
+
+.winner {
+  animation: 1s winner_aura infinite alternate;
+
+}

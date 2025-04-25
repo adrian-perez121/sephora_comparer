@@ -10,31 +10,40 @@ function Comparer ({card1_data, card2_data, card1_clear, card2_clear, ...props})
     let card2Reviews;
     let card1Price;
     let card2Price;
+    let card1Points = 0;
+    let card2Points = 0;
 
     if (card1_data && card2_data) {
         if (parseFloat(card1_data["rating"]) > parseFloat(card2_data["rating"])) {
             card1Rating = "green";
             card2Rating = "red";
+            card1Points++;
         } else if (parseFloat(card1_data["rating"]) < parseFloat(card2_data["rating"])) {
             card1Rating = "red";
             card2Rating = "green";
+            card2Points++;
         }
 
         if (parseFloat(card1_data["reviews"]) > parseFloat(card2_data["reviews"])) {
             card1Reviews = "green";
             card2Reviews = "red";
+            card1Points++;
         } else if (parseFloat(card1_data["reviews"]) < parseFloat(card2_data["reviews"])) {
             card1Reviews = "red";
             card2Reviews = "green";
+            card2Points++;
         }
 
         if (dollarToFloat(card1_data["currentSku"]["listPrice"]) > dollarToFloat(card2_data["currentSku"]["listPrice"])) {
             card1Price = "green";
             card2Price = "red";
+            card1Points++;
         } else if (dollarToFloat(card1_data["currentSku"]["listPrice"]) < dollarToFloat(card2_data["currentSku"]["listPrice"])) {
             card1Price = "red";
             card2Price = "green";
+            card2Points++;
         }
+
 
     }
 
@@ -42,11 +51,11 @@ function Comparer ({card1_data, card2_data, card1_clear, card2_clear, ...props})
     return (
         <div className="grid grid-cols-2 lg:h-104 lg:w-208">
             <div className="card relative">
-                {<Card product_data={card1_data} ratingsColor={card1Rating} reviewsColor={card1Reviews} priceColor={card1Price} style={cardStyle} />}
+                {<Card product_data={card1_data} ratingsColor={card1Rating} reviewsColor={card1Reviews} priceColor={card1Price} style={cardStyle + (card1Points > card2Points && " winner")} />}
                 {card1_data && <span className={"absolute cursor-pointer text-red-500 font-bold top-10 right-12 transition duration-200 hover:scale-125"} onClick={card1_clear}>X</span>}
             </div>
             <div className="card relative">
-                {<Card product_data={card2_data} ratingsColor={card2Rating} reviewsColor={card2Reviews} priceColor={card2Price} style={cardStyle} />}
+                {<Card product_data={card2_data} ratingsColor={card2Rating} reviewsColor={card2Reviews} priceColor={card2Price} style={cardStyle + (card1Points < card2Points && " winner")} />}
                 {card2_data && <span className="absolute cursor-pointer text-red-500 font-bold top-10 right-12 transition duration-200 hover:scale-125" onClick={card2_clear}>X</span>}
             </div>
 
