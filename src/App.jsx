@@ -60,12 +60,16 @@ function App() {
 
     }
 
+    const clearCard1 = () => {setComparedCard1(null)};
+    const clearCard2 = () => {setComparedCard2(null)};
+
+
 
   return (
     <>
         <div className="flex flex-col gap-5 items-center">
 
-            <Comparer card1_data={comparedCard1} card2_data={comparedCard2}/>
+            <Comparer card1_data={comparedCard1} card2_data={comparedCard2} card1_clear={clearCard1} card2_clear={clearCard2}/>
 
             <div>
                 <input className="px-3 py-1 w- bg-gray-200 rounded-2xl outline-none" type="text" value={itemStr} onChange={handleChange} onKeyDown={handleEnter} />

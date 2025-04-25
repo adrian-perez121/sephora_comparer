@@ -1,6 +1,6 @@
 import Card from "./Card.jsx";
 
-function Comparer ({card1_data, card2_data, ...props}) {
+function Comparer ({card1_data, card2_data, card1_clear, card2_clear, ...props}) {
     const cardStyle = "h-full p-2 flex flex-col border-1 border-gray-200 items-start rounded-4xl shadow-md relative " +
         "transition duration-300";
     let card1Rating;
@@ -30,8 +30,15 @@ function Comparer ({card1_data, card2_data, ...props}) {
 
     return (
         <div className="grid grid-cols-2 lg:h-104 lg:w-208">
-            <div className="card">{<Card product_data={card1_data} ratingsColor={card1Rating} reviewsColor={card1Reviews} style={cardStyle} />} </div>
-            <div className="card">{<Card product_data={card2_data} ratingsColor={card2Rating} reviewsColor={card2Reviews} style={cardStyle} /> }</div>
+            <div className="card relative">
+                {<Card product_data={card1_data} ratingsColor={card1Rating} reviewsColor={card1Reviews} style={cardStyle} />}
+                {card1_data && <span className="absolute cursor-pointer text-red-500 font-bold top-10 right-12 transition duration-200 hover:scale-125" onClick={card1_clear}>X</span>}
+            </div>
+            <div className="card relative">
+                {<Card product_data={card2_data} ratingsColor={card2Rating} reviewsColor={card2Reviews} style={cardStyle} />}
+                {card2_data && <span className="absolute cursor-pointer text-red-500 font-bold top-10 right-12 transition duration-200 hover:scale-125" onClick={card2_clear}>X</span>}
+            </div>
+
         </div>
     )
 }
